@@ -212,35 +212,21 @@ export default function Home() {
               {/* QR Code */}
               <div className="inline-block p-6 rounded-3xl bg-white mb-8 shadow-2xl shadow-purple-500/20">
                 <img
-                  src="/img.jpg"
+                  src="https://res.cloudinary.com/dr59elrhw/image/upload/v1764691080/sgob2hkjpyyebcpdd55q.jpg"
                   alt="Survey QR Code"
                   className="w-48 h-48 md:w-64 md:h-64 object-contain"
-                 onError={(e) => {
-  const img = e.currentTarget; // HTMLImageElement
-  img.style.display = 'none';
-  (img.nextSibling as HTMLElement).style.display = 'flex';
-}}
-
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    img.style.display = 'none';
+                    const sibling = img.nextSibling as HTMLElement;
+                    if (sibling) sibling.style.display = 'flex';
+                  }}
                 />
                 <div className="w-48 h-48 md:w-64 md:h-64 bg-gray-100 rounded-xl hidden items-center justify-center text-gray-500 flex-col gap-2">
                   <span className="text-4xl">📱</span>
-                  <span className="text-sm text-center px-4">QR Code<br />img.jpg</span>
-                </div>
-              </div>
-
-              <p className="text-white/60 text-sm mb-6">
-                Scan the QR code to access the Google Form survey
-              </p>
-
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-sm">
-                  ⏱️ 5 minutes to complete
-                </div>
-                <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-sm">
-                  📝 15 MCQ questions
-                </div>
-                <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-sm">
-                  🔒 Anonymous responses
+                  <span className="text-sm text-center px-4">
+                    QR Code<br />img.jpg
+                  </span>
                 </div>
               </div>
             </div>

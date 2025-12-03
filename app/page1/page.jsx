@@ -5,6 +5,7 @@ import { Stethoscope, GraduationCap, TrendingUp, BookOpen, Mail, Linkedin, QrCod
 export default function ResearchWebsite() {
   const [scrollY, setScrollY] = useState(0);
   const [activeSection, setActiveSection] = useState(0);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -248,15 +249,24 @@ export default function ResearchWebsite() {
               </div>
             </div>
 
-            {/* QR Code Placeholder */}
+            {/* QR Code with Cloudinary Image */}
             <div className="inline-block p-8 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl mb-6">
-              <div className="w-64 h-64 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <QrCode className="w-32 h-32 mx-auto mb-4 text-gray-400" />
-                  <p className="text-sm text-gray-600 font-semibold">Scan QR Code</p>
-                  <p className="text-xs text-gray-500">to access survey</p>
+              {!imageError ? (
+                <img
+                  src="https://res.cloudinary.com/dr59elrhw/image/upload/v1764691080/sgob2hkjpyyebcpdd55q.jpg"
+                  alt="Survey QR Code"
+                  className="w-64 h-64 object-contain rounded-xl"
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className="w-64 h-64 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center">
+                  <div className="text-center">
+                    <QrCode className="w-32 h-32 mx-auto mb-4 text-gray-400" />
+                    <p className="text-sm text-gray-600 font-semibold">Scan QR Code</p>
+                    <p className="text-xs text-gray-500">to access survey</p>
+                  </div>
                 </div>
-              </div>
+              )}
               <p className="text-sm text-gray-700 mt-4 font-semibold">Google Forms Survey</p>
             </div>
 
