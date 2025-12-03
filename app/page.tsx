@@ -215,10 +215,12 @@ export default function Home() {
                   src="/img.jpg"
                   alt="Survey QR Code"
                   className="w-48 h-48 md:w-64 md:h-64 object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
+                 onError={(e) => {
+  const img = e.currentTarget; // HTMLImageElement
+  img.style.display = 'none';
+  (img.nextSibling as HTMLElement).style.display = 'flex';
+}}
+
                 />
                 <div className="w-48 h-48 md:w-64 md:h-64 bg-gray-100 rounded-xl hidden items-center justify-center text-gray-500 flex-col gap-2">
                   <span className="text-4xl">📱</span>
